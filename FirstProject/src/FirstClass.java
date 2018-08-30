@@ -1,11 +1,31 @@
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 
 
 public class FirstClass {
-	public static void main(String[] args) 
-	{
+	
+	@Test
+	public void TestingHelloworld() {
+		
+		assertEquals("Here is test for Hello World String:", "Hello World", HelloWorld());
+	}
+	public String HelloWorld()	{
 		// TODO Auto-generated method stub
-		System.out.println("Hello world");
+		String helloworld = "Hello" + " World";
+		return helloworld;
 
 	}
+	
+	public static void main(String[] args) {
+	      Result result = JUnitCore.runClasses(FirstClass.class);
+	      for (Failure failure : result.getFailures()) {
+	         System.out.println(failure.toString());
+	      }
+	      System.out.println(result.wasSuccessful());
+	   }
+
 }
